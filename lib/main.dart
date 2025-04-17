@@ -1,30 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_tracking_app/src/router/router.dart';
 
 void main() {
-  runApp(const MoodTrackingApp());
+  runApp(const ProviderScope(child: MoodTrackingApp()));
 }
-class MoodTrackingApp extends StatelessWidget {
+class MoodTrackingApp extends ConsumerWidget {
   const MoodTrackingApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
-    );
-  }
-}
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  Widget build(BuildContext context,final WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
+      routeInformationParser: router.routeInformationParser,
 
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Hello mood'),
-      ),
     );
   }
 }
+
 
 
 

@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "C:\\Users\\yazda\\flutter sdk\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\yazda\\AppData\\Local\\Android\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\yazda\\Desktop\\mood_tracking_app\\android\\app\\.cxx\\Debug\\276h4r5e\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\yazda\\AppData\\Local\\Android\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\yazda\\Desktop\\mood_tracking_app\\android\\app\\.cxx\\Debug\\276h4r5e\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
