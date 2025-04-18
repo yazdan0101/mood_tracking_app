@@ -5,7 +5,7 @@ final moodImagesPathListProvider = Provider<List<String>>(
     'mood_sad.svg',
     'mood_angry.svg',
     'mood_okay.svg',
-    'mood_happy.svg',
     'mood_good.svg',
+    'mood_happy.svg',
   ],
 );
