@@ -9,6 +9,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     final svgImagesPathList = ref.read(moodImagesPathListProvider);
+    final textTheme = Theme.of(context).textTheme;
     const moodColors = [
       Color(0xFFEB7E5A), // Sad
       Color(0xFFF3C75A), // Angry
@@ -114,16 +115,16 @@ class HomePage extends ConsumerWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Hello, Admin',
-                        style: TextStyle(fontSize: 25),
+                        style: textTheme.labelLarge,
                       ),
                       Text(
                         'How are you feeling today?',
-                        style: TextStyle(fontSize: 18),
+                        style: textTheme.bodyMedium,
                       ),
                     ],
                   )
