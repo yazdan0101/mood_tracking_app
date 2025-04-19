@@ -30,7 +30,7 @@ class FeelingsListNotifier extends StateNotifier<List<String>> {
   FeelingsListNotifier() : super(initialFeelings);
 
   void addFeeling(final String feeling) {
-    state.add(feeling);
+    state = [...state, feeling];
   }
 }
 

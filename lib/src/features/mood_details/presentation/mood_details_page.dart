@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_scaffold.dart';
 import 'package:mood_tracking_app/src/core/widgets/feeling_section.dart';
 import 'package:mood_tracking_app/src/core/widgets/mood_images_list.dart';
+import 'package:mood_tracking_app/src/core/widgets/sleep_quality_section.dart';
 import 'package:mood_tracking_app/src/core/widgets/step_indicator.dart';
 
 class MoodDetailsPage extends ConsumerWidget {
@@ -34,7 +35,11 @@ class MoodDetailsPage extends ConsumerWidget {
           const SizedBox(
             height: 20,
           ),
-          const FeelingSection()
+          const FeelingSection(),
+          const SizedBox(
+            height: 20,
+          ),
+          const SleepQualitySection(),
         ],
       ),
     );
