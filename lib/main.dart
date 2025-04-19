@@ -61,7 +61,7 @@ const ColorScheme lightColorScheme = ColorScheme(
   onPrimary: Colors.white,
   primaryContainer: AppColors.primaryLight,
   secondary: AppColors.secondary,
-  onSecondary: Colors.white,
+  onSecondary: Color.fromRGBO(215, 211, 207, 1),
   secondaryContainer: AppColors.secondaryLight,
   surface: AppColors.surface,
   onSurface: AppColors.textPrimary,

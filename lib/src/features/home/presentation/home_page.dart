@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_scaffold.dart';
-import 'package:mood_tracking_app/src/core/widgets/mood_images_container.dart';
+import 'package:mood_tracking_app/src/core/widgets/mood_images_list.dart';
+import 'package:mood_tracking_app/src/router/routes.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
-    final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
     return CustomScaffold(
+      title: null,
       body: Column(
         children: [
           Row(
@@ -18,7 +23,7 @@ class HomePage extends ConsumerWidget {
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundColor: const Color.fromRGBO(215, 211, 207, 1),
+                    backgroundColor: colorScheme.onSecondary,
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -72,7 +77,9 @@ class HomePage extends ConsumerWidget {
           const SizedBox(
             height: 16,
           ),
-          const MoodImagesContainer(),
+          MoodImagesList(
+            onTap: () => context.push(MoodDetailsRoute().location),
+          ),
         ],
       ),
     );
