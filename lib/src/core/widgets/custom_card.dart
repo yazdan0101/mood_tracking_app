@@ -11,6 +11,7 @@ class CustomCard extends ConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -20,15 +21,18 @@ class CustomCard extends ConsumerWidget {
             children: [
               Text(
                 title,
-                style: textTheme.labelLarge,
+                style: textTheme.bodyMedium,
               ),
               const SizedBox(
                 height: 16,
               ),
-              Wrap(
-                runSpacing: 6,
-                spacing: 6,
-                children: wrapChildren,
+              SizedBox(
+                width: screenWidth,
+                child: Wrap(
+                  runSpacing: 8,
+                  spacing: 8,
+                  children: wrapChildren,
+                ),
               )
             ],
           ),

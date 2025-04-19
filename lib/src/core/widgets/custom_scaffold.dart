@@ -16,6 +16,7 @@ class CustomScaffold extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(12),
                 child: AppBar(
+                  surfaceTintColor: Colors.transparent,
                   title: title,
                   actions: [
                     Container(
