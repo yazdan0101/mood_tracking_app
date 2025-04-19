@@ -18,8 +18,14 @@ class MoodTrackingApp extends ConsumerWidget {
         cardColor: AppColors.surface,
         dividerColor: AppColors.border,
         textTheme: ThemeData.light().textTheme.copyWith(
-              bodyLarge: const TextStyle(fontSize: 22, color: Colors.black),
-              bodyMedium: const TextStyle(fontSize: 20, color: Colors.black),
+              bodyLarge: const TextStyle(
+                  fontSize: 22,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+              bodyMedium: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
               bodySmall: const TextStyle(fontSize: 16, color: Colors.black),
               labelLarge: const TextStyle(fontSize: 24, color: Colors.black),
             ),

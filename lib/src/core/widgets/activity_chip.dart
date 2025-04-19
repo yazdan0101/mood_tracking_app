@@ -36,7 +36,7 @@ class ActivityChip extends ConsumerWidget {
             isFellingSelected ? colorScheme.primary : colorScheme.onSecondary,
         label: Text(
           activity,
-          style: textTheme.bodyLarge?.copyWith(
+          style: textTheme.bodyMedium?.copyWith(
             color:
                 isFellingSelected ? colorScheme.surface : colorScheme.onSurface,
           ),

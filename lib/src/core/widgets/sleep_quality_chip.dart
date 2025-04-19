@@ -40,7 +40,7 @@ class SleepQualityChip extends ConsumerWidget {
             : colorScheme.onSecondary,
         label: Text(
           sleepQuality,
-          style: textTheme.bodyLarge?.copyWith(
+          style: textTheme.bodyMedium?.copyWith(
               color: isSleepQualitySelected
                   ? colorScheme.surface
                   : colorScheme.onSurface),
