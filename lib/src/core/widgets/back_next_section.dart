@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_tracking_app/src/core/providers/best_today_description_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/selected_activity_list_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/selected_feelings_list_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/selected_sleep_quality_list_provider.dart';
 
 class BackNextSection extends ConsumerWidget {
   const BackNextSection({required this.pageIndex, super.key});
@@ -34,7 +38,40 @@ class BackNextSection extends ConsumerWidget {
             ],
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              final selectedFeelingList =
+                  ref.read(selectedFeelingsListProvider);
+              final selectedSleepQuality =
+                  ref.read(selectedSleepQualityListProvider);
+              final selectedActivity = ref.read(selectedActivityProvider);
+              final bestOfToday = ref.read(bestTodayDescriptionProvider);
+              final isFormValid = selectedFeelingList.isNotEmpty &&
+                  selectedSleepQuality.isNotEmpty &&
+                  selectedActivity.isNotEmpty &&
+                  bestOfToday != null;
+              if (isFormValid) {
+                print('valid');
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Row(
+                      children: [
+                        Icon(
+                          Icons.info_outline,
+                          color: colorScheme.surface,
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        const Text(
+                          'You must answer every question',
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }
+            },
             child: Row(
               children: [
                 Text(
