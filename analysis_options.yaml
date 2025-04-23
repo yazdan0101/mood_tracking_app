@@ -42,3 +42,8 @@ linter:
     unnecessary_to_list_in_spreads: true
     secure_pubspec_urls: true
     sort_pub_dependencies: true
+
+
+analyzer:
+  errors:
+    invalid_annotation_target: ignore

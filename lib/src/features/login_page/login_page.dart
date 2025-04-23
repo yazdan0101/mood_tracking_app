@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mood_tracking_app/src/core/entities/user.dart';
 import 'package:mood_tracking_app/src/core/providers/auth_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/base_backend_url_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/user_provider.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -105,17 +108,32 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                                   horizontal: 50, vertical: 16),
                             ),
                             backgroundColor: WidgetStatePropertyAll<Color>(
-                                colorScheme.primary),
+                              colorScheme.primary,
+                            ),
                             foregroundColor: WidgetStatePropertyAll<Color>(
-                                colorScheme.surface),
+                              colorScheme.surface,
+                            ),
                           ),
                           onPressed: auth.status != AuthStatus.loading
                               ? () async {
                                   if (_formKey.currentState!.validate()) {
                                     _formKey.currentState!.save();
+                                    final user = User(
+                                      userName: _username,
+                                      password: _password,
+                                    );
+                                    final backendBaseUrl =
+                                        ref.read(baseBackendUrlProvider);
                                     await ref
                                         .read(authProvider.notifier)
-                                        .login(_username, _password);
+                                        .login(user, backendBaseUrl)
+                                        .then(
+                                      (final _) {
+                                        ref
+                                            .read(userProvider.notifier)
+                                            .updateUser(user);
+                                      },
+                                    );
                                   }
                                 }
                               : null,

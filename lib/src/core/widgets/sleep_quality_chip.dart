@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_tracking_app/src/core/providers/selected_sleep_quality_list_provider.dart';
+import 'package:mood_tracking_app/src/core/enums/sleep_quality.dart';
+import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 
 class SleepQualityChip extends ConsumerWidget {
   const SleepQualityChip(
       {required this.iconData, required this.sleepQuality, super.key});
 
-  final String sleepQuality;
+  final SleepQuality sleepQuality;
   final IconData iconData;
 
   @override
@@ -14,18 +15,15 @@ class SleepQualityChip extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final selectedSleepQualities = ref.watch(selectedSleepQualityListProvider);
-    final isSleepQualitySelected =
-        selectedSleepQualities.contains(sleepQuality);
+    final selectedSleepQuality = ref.watch(moodEntryProvider.select(
+      (final state) => state.sleepQuality,
+    ));
+    final isSleepQualitySelected = selectedSleepQuality == sleepQuality.name;
     return InkWell(
       onTap: () {
-        final selectedSleepQualityListNotifier =
-            ref.read(selectedSleepQualityListProvider.notifier);
-        if (isSleepQualitySelected) {
-          selectedSleepQualityListNotifier.removeSleepQuality(sleepQuality);
-        } else {
-          selectedSleepQualityListNotifier.addSleepQuality(sleepQuality);
-        }
+        ref
+            .read(moodEntryProvider.notifier)
+            .updateSleepQuality(sleepQuality.name);
       },
       child: Chip(
         avatar: Icon(
@@ -39,11 +37,12 @@ class SleepQualityChip extends ConsumerWidget {
             ? colorScheme.primary
             : colorScheme.onSecondary,
         label: Text(
-          sleepQuality,
+          sleepQuality.name,
           style: textTheme.bodyMedium?.copyWith(
-              color: isSleepQualitySelected
-                  ? colorScheme.surface
-                  : colorScheme.onSurface),
+            color: isSleepQualitySelected
+                ? colorScheme.surface
+                : colorScheme.onSurface,
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 import 'package:mood_tracking_app/src/core/providers/selected_feelings_list_provider.dart';
 
 class FeelingChip extends ConsumerWidget {
@@ -17,13 +18,15 @@ class FeelingChip extends ConsumerWidget {
     final isFellingSelected = selectedFeelings.contains(feeling);
     return InkWell(
       onTap: () {
-        final feelingListNotifier =
+        final selectedFeelingListNotifier =
             ref.read(selectedFeelingsListProvider.notifier);
         if (isFellingSelected) {
-          feelingListNotifier.removeFeeling(feeling);
+          selectedFeelingListNotifier.removeFeeling(feeling);
         } else {
-          feelingListNotifier.addFeeling(feeling);
+          selectedFeelingListNotifier.addFeeling(feeling);
         }
+        final feelings = ref.read(selectedFeelingsListProvider);
+        ref.read(moodEntryProvider.notifier).updateFeelingList(feelings);
       },
       child: Chip(
         avatar: Icon(

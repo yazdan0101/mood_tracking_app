@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 import 'package:mood_tracking_app/src/core/providers/selected_activity_list_provider.dart';
 
 class ActivityChip extends ConsumerWidget {
@@ -24,6 +25,8 @@ class ActivityChip extends ConsumerWidget {
         } else {
           activityNotifier.addActivity(activity);
         }
+        final activities = ref.read(selectedActivityProvider);
+        ref.read(moodEntryProvider.notifier).updateActivityList(activities);
       },
       child: Chip(
         avatar: Icon(

@@ -15,4 +15,5 @@ class SelectedActivityListNotifier extends StateNotifier<List<String>> {
 
 final selectedActivityProvider =
     StateNotifierProvider<SelectedActivityListNotifier, List<String>>(
-        (ref) => SelectedActivityListNotifier());
+  (final ref) => SelectedActivityListNotifier(),
+);

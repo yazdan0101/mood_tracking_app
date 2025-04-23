@@ -9,8 +9,8 @@ import 'package:mood_tracking_app/src/core/widgets/sleep_quality_section.dart';
 import 'package:mood_tracking_app/src/core/widgets/step_indicator.dart';
 import 'package:mood_tracking_app/src/core/widgets/the_best_about_today_description.dart';
 
-class MoodDetailsPage extends ConsumerWidget {
-  const MoodDetailsPage({super.key});
+class DetailsPage extends ConsumerWidget {
+  const DetailsPage({super.key});
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
@@ -38,7 +38,9 @@ class MoodDetailsPage extends ConsumerWidget {
             const SizedBox(
               height: 10,
             ),
-            const MoodImagesList(onTap: null),
+            const MoodImagesList(
+              isHome: false,
+            ),
             const SizedBox(
               height: 20,
             ),

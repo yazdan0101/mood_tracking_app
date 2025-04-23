@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 import 'package:mood_tracking_app/src/core/widgets/back_next_section.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_scaffold.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_text_field.dart';
 import 'package:mood_tracking_app/src/core/widgets/step_indicator.dart';
 
-class MoodCommentPage extends ConsumerStatefulWidget {
-  const MoodCommentPage({super.key});
+class CommentPage extends ConsumerStatefulWidget {
+  const CommentPage({super.key});
 
   @override
   ConsumerState createState() => _MoodCommentPageState();
 }
 
-class _MoodCommentPageState extends ConsumerState<MoodCommentPage> {
+class _MoodCommentPageState extends ConsumerState<CommentPage> {
   late TextEditingController _controller;
 
   @override
@@ -31,6 +32,7 @@ class _MoodCommentPageState extends ConsumerState<MoodCommentPage> {
   Widget build(final BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return CustomScaffold(
+      resizeToAvoidBottomInset: false,
       title: const Text('Mood'),
       body: Column(
         children: [
@@ -51,7 +53,9 @@ class _MoodCommentPageState extends ConsumerState<MoodCommentPage> {
           Card(
             child: CustomTextField(
               maxLines: 8,
-              onChange: (final value) {},
+              onChange: (final value) {
+                ref.read(moodEntryProvider.notifier).updateNote(value);
+              },
               controller: _controller,
             ),
           ),

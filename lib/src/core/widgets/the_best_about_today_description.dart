@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_tracking_app/src/core/providers/best_today_description_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_text_field.dart';
 
 class TheBestAboutTodayDescription extends ConsumerStatefulWidget {
@@ -40,15 +40,8 @@ class _TheBestTodayDescriptionState
             ),
             CustomTextField(
               maxLines: 1,
-              onChange: (final value) {
-                final bestTodayDescNotifier =
-                    ref.read(bestTodayDescriptionProvider.notifier);
-                if (value.isEmpty) {
-                  bestTodayDescNotifier.removeDescription();
-                } else {
-                  bestTodayDescNotifier.addDescription(value);
-                }
-              },
+              onChange: (final value) =>
+                  ref.read(moodEntryProvider.notifier).updateBestOfToday(value),
               controller: _controller,
             )
           ],

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'package:mood_tracking_app/src/core/entities/user.dart';
 
 enum AuthStatus { idle, loading, authenticated, error }
 
@@ -27,13 +27,14 @@ class AuthState {
 class AuthNotifier extends StateNotifier<AuthState> {
   AuthNotifier() : super(AuthState());
 
-  Future<void> login(final String username, final String password) async {
+  Future<void> login(final User user, final String backendBaseUrl) async {
     state = state.copyWith(status: AuthStatus.loading);
     try {
       final response = await http.post(
         Uri.parse('$backendBaseUrl/api/login'),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'username': username, 'password': password}),
+        body:
+            jsonEncode({'username': user.userName, 'password': user.password}),
       );
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -54,16 +55,3 @@ class AuthNotifier extends StateNotifier<AuthState> {
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
   (final ref) => AuthNotifier(),
 );
-
-String get backendBaseUrl {
-  if (kIsWeb) {
-    return 'http://localhost:8000';
-  }
-
-  switch (defaultTargetPlatform) {
-    case TargetPlatform.android:
-      return 'http://10.0.2.2:8000';
-    default:
-      return 'http://localhost:8000';
-  }
-}

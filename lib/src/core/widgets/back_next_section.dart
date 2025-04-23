@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mood_tracking_app/src/core/providers/best_today_description_provider.dart';
-import 'package:mood_tracking_app/src/core/providers/selected_activity_list_provider.dart';
-import 'package:mood_tracking_app/src/core/providers/selected_feelings_list_provider.dart';
-import 'package:mood_tracking_app/src/core/providers/selected_sleep_quality_list_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/post_mood_entry.dart';
 import 'package:mood_tracking_app/src/router/routes.dart';
 
 class BackNextSection extends ConsumerWidget {
@@ -40,53 +38,57 @@ class BackNextSection extends ConsumerWidget {
             ],
           ),
           InkWell(
-            onTap: () {
-              final selectedFeelingList =
-                  ref.read(selectedFeelingsListProvider);
-              final selectedSleepQuality =
-                  ref.read(selectedSleepQualityListProvider);
-              final selectedActivity = ref.read(selectedActivityProvider);
-              final bestOfToday = ref.read(bestTodayDescriptionProvider);
-              final isFormValid = selectedFeelingList.isNotEmpty &&
-                  selectedSleepQuality.isNotEmpty &&
-                  selectedActivity.isNotEmpty &&
-                  bestOfToday != null;
-              if (isFormValid) {
-                context.push(MoodCommentRoute().location);
-              } else {
+            onTap: () async {
+              final moodEntry = ref.read(moodEntryProvider);
+
+              final isFormValid = moodEntry.moodType != null &&
+                  (moodEntry.feelingList?.isNotEmpty ?? false) &&
+                  (moodEntry.activityList?.isNotEmpty ?? false) &&
+                  (moodEntry.sleepQuality?.isNotEmpty ?? false) &&
+                  (moodEntry.bestAboutToday?.isNotEmpty ?? false);
+
+              if (!isFormValid) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Row(
-                      children: [
-                        Icon(
-                          Icons.info_outline,
-                          color: colorScheme.surface,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        const Text(
-                          'You must answer every question',
-                        ),
-                      ],
-                    ),
-                  ),
+                  const SnackBar(
+                      content: Text('You must answer every question')),
                 );
+                return;
+              }
+              if (pageIndex == 0) {
+                context.push(MoodCommentRoute().location);
+                return;
+              }
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (_) =>
+                    const Center(child: CircularProgressIndicator()),
+              );
+
+              try {
+                await ref.read(postMoodEntryProvider(moodEntry).future);
+                if (context.mounted) {
+                  context.pop();
+                } // remove loading
+
+                print('successful');
+              } catch (err) {
+                if (context.mounted) {
+                  context.pop();
+                }
+                print('error: $err');
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Failed to submit: $err')),
+                  );
+                }
               }
             },
             child: Row(
               children: [
-                Text(
-                  'Next',
-                  style: textTheme.bodyLarge,
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                const Icon(
-                  Icons.arrow_forward,
-                  size: 30,
-                )
+                Text(pageIndex == 0 ? 'Next' : 'Finish'),
+                const SizedBox(width: 8),
+                const Icon(Icons.arrow_forward, size: 30),
               ],
             ),
           ),

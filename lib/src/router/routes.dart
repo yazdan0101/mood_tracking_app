@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mood_tracking_app/src/features/auth/login_page.dart';
-import 'package:mood_tracking_app/src/features/home/presentation/home_page.dart';
-import 'package:mood_tracking_app/src/features/mood_comment/presentation/mood_comment_page.dart';
-import 'package:mood_tracking_app/src/features/mood_details/presentation/mood_details_page.dart';
-
+import 'package:mood_tracking_app/src/features/comment_page/comment_page.dart';
+import 'package:mood_tracking_app/src/features/details/details_page.dart';
+import 'package:mood_tracking_app/src/features/home/home_page.dart';
+import 'package:mood_tracking_app/src/features/login_page/login_page.dart';
 part 'routes.g.dart';
 
 @TypedGoRoute<LoginRoute>(
@@ -46,7 +45,7 @@ class MoodDetailsRoute extends GoRouteData {
     final BuildContext context,
     final GoRouterState state,
   ) =>
-      const MoodDetailsPage();
+      const DetailsPage();
 }
 
 @TypedGoRoute<MoodCommentRoute>(
@@ -60,5 +59,5 @@ class MoodCommentRoute extends GoRouteData {
     final BuildContext context,
     final GoRouterState state,
   ) =>
-      const MoodCommentPage();
+      const CommentPage();
 }

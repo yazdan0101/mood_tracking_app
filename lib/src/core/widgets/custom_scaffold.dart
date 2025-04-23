@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({required this.title, required this.body, super.key});
+  const CustomScaffold(
+      {this.resizeToAvoidBottomInset,
+      required this.title,
+      required this.body,
+      super.key});
 
   final Widget body;
   final Text? title;
+  final bool? resizeToAvoidBottomInset;
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: Card(
