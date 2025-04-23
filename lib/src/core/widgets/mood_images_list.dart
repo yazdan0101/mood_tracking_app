@@ -30,7 +30,7 @@ class MoodImagesList extends ConsumerWidget {
           itemBuilder: (final context, final index) => InkWell(
             onTap: () {
               if (isHome) {
-                context.push(MoodDetailsRoute().location);
+                context.push(DetailsRoute().location);
               }
               final moodNotifier = ref.read(moodEntryProvider.notifier);
 

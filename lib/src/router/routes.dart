@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mood_tracking_app/src/features/comment_page/comment_page.dart';
-import 'package:mood_tracking_app/src/features/details/details_page.dart';
-import 'package:mood_tracking_app/src/features/home/home_page.dart';
+import 'package:mood_tracking_app/src/features/details_page/details_page.dart';
+import 'package:mood_tracking_app/src/features/home_page/home_page.dart';
 import 'package:mood_tracking_app/src/features/login_page/login_page.dart';
+import 'package:mood_tracking_app/src/features/successful_page/successful_page.dart';
+
 part 'routes.g.dart';
 
 @TypedGoRoute<LoginRoute>(
@@ -34,11 +36,11 @@ class HomeRoute extends GoRouteData {
       const HomePage();
 }
 
-@TypedGoRoute<MoodDetailsRoute>(
-  path: '/mood_details',
+@TypedGoRoute<DetailsRoute>(
+  path: '/details',
 )
-class MoodDetailsRoute extends GoRouteData {
-  MoodDetailsRoute();
+class DetailsRoute extends GoRouteData {
+  DetailsRoute();
 
   @override
   Widget build(
@@ -48,11 +50,11 @@ class MoodDetailsRoute extends GoRouteData {
       const DetailsPage();
 }
 
-@TypedGoRoute<MoodCommentRoute>(
-  path: '/mood_comment',
+@TypedGoRoute<CommentRoute>(
+  path: '/comment',
 )
-class MoodCommentRoute extends GoRouteData {
-  MoodCommentRoute();
+class CommentRoute extends GoRouteData {
+  CommentRoute();
 
   @override
   Widget build(
@@ -60,4 +62,18 @@ class MoodCommentRoute extends GoRouteData {
     final GoRouterState state,
   ) =>
       const CommentPage();
+}
+
+@TypedGoRoute<SuccessfulRoute>(
+  path: '/successful',
+)
+class SuccessfulRoute extends GoRouteData {
+  SuccessfulRoute();
+
+  @override
+  Widget build(
+    final BuildContext context,
+    final GoRouterState state,
+  ) =>
+      const SuccessfulPage();
 }

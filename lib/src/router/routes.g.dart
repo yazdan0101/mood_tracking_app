@@ -9,8 +9,9 @@ part of 'routes.dart';
 List<RouteBase> get $appRoutes => [
       $loginRoute,
       $homeRoute,
-      $moodDetailsRoute,
-      $moodCommentRoute,
+      $detailsRoute,
+      $commentRoute,
+      $successfulRoute,
     ];
 
 RouteBase get $loginRoute => GoRouteData.$route(
@@ -57,16 +58,16 @@ extension $HomeRouteExtension on HomeRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $moodDetailsRoute => GoRouteData.$route(
-      path: '/mood_details',
-      factory: $MoodDetailsRouteExtension._fromState,
+RouteBase get $detailsRoute => GoRouteData.$route(
+      path: '/details',
+      factory: $DetailsRouteExtension._fromState,
     );
 
-extension $MoodDetailsRouteExtension on MoodDetailsRoute {
-  static MoodDetailsRoute _fromState(GoRouterState state) => MoodDetailsRoute();
+extension $DetailsRouteExtension on DetailsRoute {
+  static DetailsRoute _fromState(GoRouterState state) => DetailsRoute();
 
   String get location => GoRouteData.$location(
-        '/mood_details',
+        '/details',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -79,16 +80,38 @@ extension $MoodDetailsRouteExtension on MoodDetailsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $moodCommentRoute => GoRouteData.$route(
-      path: '/mood_comment',
-      factory: $MoodCommentRouteExtension._fromState,
+RouteBase get $commentRoute => GoRouteData.$route(
+      path: '/comment',
+      factory: $CommentRouteExtension._fromState,
     );
 
-extension $MoodCommentRouteExtension on MoodCommentRoute {
-  static MoodCommentRoute _fromState(GoRouterState state) => MoodCommentRoute();
+extension $CommentRouteExtension on CommentRoute {
+  static CommentRoute _fromState(GoRouterState state) => CommentRoute();
 
   String get location => GoRouteData.$location(
-        '/mood_comment',
+        '/comment',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $successfulRoute => GoRouteData.$route(
+      path: '/successful',
+      factory: $SuccessfulRouteExtension._fromState,
+    );
+
+extension $SuccessfulRouteExtension on SuccessfulRoute {
+  static SuccessfulRoute _fromState(GoRouterState state) => SuccessfulRoute();
+
+  String get location => GoRouteData.$location(
+        '/successful',
       );
 
   void go(BuildContext context) => context.go(location);

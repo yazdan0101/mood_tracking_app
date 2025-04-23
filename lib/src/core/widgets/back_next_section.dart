@@ -55,7 +55,7 @@ class BackNextSection extends ConsumerWidget {
                 return;
               }
               if (pageIndex == 0) {
-                context.push(MoodCommentRoute().location);
+                context.push(CommentRoute().location);
                 return;
               }
               showDialog(
@@ -68,10 +68,10 @@ class BackNextSection extends ConsumerWidget {
               try {
                 await ref.read(postMoodEntryProvider(moodEntry).future);
                 if (context.mounted) {
-                  context.pop();
-                } // remove loading
-
-                print('successful');
+                  context
+                    ..pop()
+                    ..push('/successful');
+                }
               } catch (err) {
                 if (context.mounted) {
                   context.pop();
