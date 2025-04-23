@@ -59,6 +59,8 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextFormField(
+                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             labelText: 'username',
                             labelStyle: labelStyle,
@@ -70,6 +72,8 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                         ),
                         gap20,
                         TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          textInputAction: TextInputAction.done,
                           decoration: InputDecoration(
                             labelText: 'password',
                             labelStyle: labelStyle,
@@ -82,10 +86,18 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                         ),
                         gap20,
                         ElevatedButton.icon(
-                          icon: Icon(
-                            Icons.login,
-                            color: colorScheme.surface,
-                          ),
+                          icon: auth.status == AuthStatus.loading
+                              ? SizedBox(
+                                  height: 20,
+                                  width: 20,
+                                  child: CircularProgressIndicator(
+                                    color: colorScheme.surface,
+                                  ),
+                                )
+                              : Icon(
+                                  Icons.login,
+                                  color: colorScheme.surface,
+                                ),
                           style: ButtonStyle(
                             padding: const WidgetStatePropertyAll<
                                 EdgeInsetsGeometry>(
@@ -97,14 +109,16 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                             foregroundColor: WidgetStatePropertyAll<Color>(
                                 colorScheme.surface),
                           ),
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState!.save();
-                              await ref
-                                  .read(authProvider.notifier)
-                                  .login(_username, _password);
-                            }
-                          },
+                          onPressed: auth.status != AuthStatus.loading
+                              ? () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    _formKey.currentState!.save();
+                                    await ref
+                                        .read(authProvider.notifier)
+                                        .login(_username, _password);
+                                  }
+                                }
+                              : null,
                           label: const Text('login'),
                         ),
                         if (auth.status == AuthStatus.error)

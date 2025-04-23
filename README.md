@@ -27,7 +27,7 @@ API to allow users to log in and record daily mood entries with additional conte
 
 2. **Clone the repository**
    ```bash
-   git clone https://github.com/<your-username>/mood-tracking-app.git
+   git clone https://github.com/yazdan0101/mood-tracking-app.git
    cd mood-tracking-app
    ```
 
