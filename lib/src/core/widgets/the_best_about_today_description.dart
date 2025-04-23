@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_tracking_app/src/core/providers/best_today_description_provider.dart';
+import 'package:mood_tracking_app/src/core/widgets/custom_text_field.dart';
 
 class TheBestAboutTodayDescription extends ConsumerStatefulWidget {
   const TheBestAboutTodayDescription({super.key});
@@ -27,10 +28,7 @@ class _TheBestTodayDescriptionState
 
   @override
   Widget build(final BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-
+    final textTheme = Theme.of(context).textTheme;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -40,9 +38,9 @@ class _TheBestTodayDescriptionState
               'What was the best today?',
               style: textTheme.bodyMedium,
             ),
-            TextField(
-              controller: _controller,
-              onChanged: (final value) {
+            CustomTextField(
+              maxLines: 1,
+              onChange: (final value) {
                 final bestTodayDescNotifier =
                     ref.read(bestTodayDescriptionProvider.notifier);
                 if (value.isEmpty) {
@@ -51,12 +49,7 @@ class _TheBestTodayDescriptionState
                   bestTodayDescNotifier.addDescription(value);
                 }
               },
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(borderSide: BorderSide.none),
-                hintText: 'Start to type',
-                hintStyle: textTheme.bodySmall
-                    ?.copyWith(color: colorScheme.onSecondary),
-              ),
+              controller: _controller,
             )
           ],
         ),

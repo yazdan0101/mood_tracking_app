@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mood_tracking_app/src/core/providers/best_today_description_provider.dart';
 import 'package:mood_tracking_app/src/core/providers/selected_activity_list_provider.dart';
 import 'package:mood_tracking_app/src/core/providers/selected_feelings_list_provider.dart';
 import 'package:mood_tracking_app/src/core/providers/selected_sleep_quality_list_provider.dart';
+import 'package:mood_tracking_app/src/router/routes.dart';
 
 class BackNextSection extends ConsumerWidget {
   const BackNextSection({required this.pageIndex, super.key});
@@ -50,7 +52,7 @@ class BackNextSection extends ConsumerWidget {
                   selectedActivity.isNotEmpty &&
                   bestOfToday != null;
               if (isFormValid) {
-                print('valid');
+                context.push(MoodCommentRoute().location);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(

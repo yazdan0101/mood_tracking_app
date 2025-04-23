@@ -8,10 +8,12 @@ class CustomScaffold extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: Card(
             margin: EdgeInsets.zero,
+            surfaceTintColor: Colors.transparent,
             child: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(12),
