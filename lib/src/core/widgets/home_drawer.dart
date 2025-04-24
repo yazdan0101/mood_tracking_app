@@ -8,8 +8,11 @@ import 'package:mood_tracking_app/src/core/widgets/vertical_gap_widget.dart';
 class HomeDrawer extends ConsumerWidget {
   const HomeDrawer({super.key});
 
-  void _onChangeLocale(final BuildContext context, final WidgetRef ref,
-      final String languageCode) {
+  void _onChangeLocale(
+    final BuildContext context,
+    final WidgetRef ref,
+    final String languageCode,
+  ) {
     FlutterI18n.refresh(context, Locale(languageCode));
     ref
         .read(currentAppLocaleProvider.notifier)

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mood_tracking_app/src/features/comment_page/comment_page.dart';
-import 'package:mood_tracking_app/src/features/details_page/details_page.dart';
-import 'package:mood_tracking_app/src/features/home_page/home_page.dart';
-import 'package:mood_tracking_app/src/features/login_page/login_page.dart';
-import 'package:mood_tracking_app/src/features/successful_page/successful_page.dart';
+import 'package:mood_tracking_app/src/pages/comment_page/comment_page.dart';
+import 'package:mood_tracking_app/src/pages/details_page/details_page.dart';
+import 'package:mood_tracking_app/src/pages/home_page/home_page.dart';
+import 'package:mood_tracking_app/src/pages/login_page/login_page.dart';
+import 'package:mood_tracking_app/src/pages/successful_page/successful_page.dart';
 
 part 'routes.g.dart';
 

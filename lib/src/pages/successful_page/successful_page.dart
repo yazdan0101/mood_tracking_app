@@ -42,7 +42,7 @@ class SuccessfulPage extends ConsumerWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 16),
+              const VerticalGapWidget(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Align(
@@ -65,7 +65,7 @@ class SuccessfulPage extends ConsumerWidget {
                               text: FlutterI18n.translate(context, 'progress'),
                               style:
                                   style?.copyWith(fontWeight: FontWeight.bold),
-                            )
+                            ),
                           ],
                         ),
                         textAlign: TextAlign.center,
@@ -86,9 +86,9 @@ class SuccessfulPage extends ConsumerWidget {
                       ..invalidate(selectedSleepQualityProvider);
                     context.go('/');
                   },
-                  label: const Icon(
+                  label: Icon(
                     Icons.check_circle,
-                    color: Colors.white,
+                    color: colorScheme.surface,
                     size: 30,
                   ),
                   icon: Text(
