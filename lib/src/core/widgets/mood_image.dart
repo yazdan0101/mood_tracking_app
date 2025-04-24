@@ -20,6 +20,7 @@ class MoodImage extends ConsumerWidget {
       width: 90,
       height: 90,
       margin: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         color: moodColors[index],

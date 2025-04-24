@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 class HomeProfileWidget extends StatelessWidget {
   const HomeProfileWidget({super.key});
@@ -55,12 +56,12 @@ class HomeProfileWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hello, Admin',
+                FlutterI18n.translate(context, 'hello_admin'),
                 style: textTheme.labelLarge,
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
-                'How are you feeling today?',
+                FlutterI18n.translate(context, 'feel_today'),
                 style: textTheme.bodyMedium,
                 overflow: TextOverflow.ellipsis,
               ),

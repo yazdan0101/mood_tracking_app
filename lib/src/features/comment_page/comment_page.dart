@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 import 'package:mood_tracking_app/src/core/widgets/back_next_section.dart';
@@ -34,15 +35,16 @@ class _MoodCommentPageState extends ConsumerState<CommentPage> {
     final textTheme = Theme.of(context).textTheme;
     return CustomScaffold(
       resizeToAvoidBottomInset: false,
-      title: const Text('Mood'),
+      title: Text(FlutterI18n.translate(context, 'mood')),
       body: Column(
         children: [
           const VerticalGapWidget(),
           const StepIndicator(numSteps: 2, pageIndex: 1),
           const VerticalGapWidget(),
           Text(
-            'Do you want to enter a comment?',
+            FlutterI18n.translate(context, 'add_comment'),
             style: textTheme.bodyLarge,
+            textAlign: TextAlign.center,
           ),
           const VerticalGapWidget(),
           Card(
@@ -81,11 +83,11 @@ class _MoodCommentPageState extends ConsumerState<CommentPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Tell me how you were doing!',
+                      Text(
+                        FlutterI18n.translate(context, 'tell_status'),
                       ),
                       Text(
-                        'Use this field to record your feelings, special moments, or progress.',
+                        FlutterI18n.translate(context, 'comment_hint'),
                         style: textTheme.bodyMedium
                             ?.copyWith(fontWeight: FontWeight.normal),
                       ),

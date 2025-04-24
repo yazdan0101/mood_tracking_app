@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
@@ -31,7 +32,7 @@ class BackNextSection extends ConsumerWidget {
                 width: 8,
               ),
               Text(
-                'Back',
+                FlutterI18n.translate(context, 'back'),
                 style: textTheme.bodyLarge
                     ?.copyWith(color: colorScheme.onSecondary),
               ),
@@ -49,8 +50,8 @@ class BackNextSection extends ConsumerWidget {
 
               if (!isFormValid) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('You must answer every question'),
+                  SnackBar(
+                    content: Text(FlutterI18n.translate(context, 'answer_req')),
                   ),
                 );
                 return;
@@ -79,14 +80,26 @@ class BackNextSection extends ConsumerWidget {
                 }
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Failed to submit: $err')),
+                    SnackBar(
+                      content: Text(
+                        FlutterI18n.translate(
+                          context,
+                          'submit_failed',
+                          translationParams: {'err': err.toString()},
+                        ),
+                      ),
+                    ),
                   );
                 }
               }
             },
             child: Row(
               children: [
-                Text(pageIndex == 0 ? 'Next' : 'Finish'),
+                Text(
+                  pageIndex == 0
+                      ? FlutterI18n.translate(context, 'next')
+                      : FlutterI18n.translate(context, 'complete'),
+                ),
                 const SizedBox(width: 8),
                 const Icon(Icons.arrow_forward, size: 30),
               ],

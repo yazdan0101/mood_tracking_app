@@ -67,27 +67,31 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
-                            labelText: 'username',
+                            labelText:
+                                FlutterI18n.translate(context, 'username'),
                             labelStyle: labelStyle,
                           ),
                           style: textFieldTextStyle,
                           onSaved: (final v) => _username = v!.trim(),
-                          validator: (final v) =>
-                              v!.isEmpty ? 'username_required' : null,
+                          validator: (final v) => v!.isEmpty
+                              ? FlutterI18n.translate(context, 'username_req')
+                              : null,
                         ),
                         const VerticalGapWidget(),
                         TextFormField(
                           keyboardType: TextInputType.visiblePassword,
                           textInputAction: TextInputAction.done,
                           decoration: InputDecoration(
-                            labelText: 'password',
+                            labelText:
+                                FlutterI18n.translate(context, 'password'),
                             labelStyle: labelStyle,
                           ),
                           obscureText: true,
                           style: textFieldTextStyle,
                           onSaved: (final v) => _password = v!.trim(),
-                          validator: (final v) =>
-                              v!.isEmpty ? 'password_required' : null,
+                          validator: (final v) => v!.isEmpty
+                              ? FlutterI18n.translate(context, 'password_req')
+                              : null,
                         ),
                         const VerticalGapWidget(),
                         const VerticalGapWidget(),
@@ -133,7 +137,7 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                                 }
                               : null,
                           label: Text(
-                            'login',
+                            FlutterI18n.translate(context, 'login'),
                             style: textTheme.bodyMedium
                                 ?.copyWith(color: colorScheme.surface),
                           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_text_field.dart';
@@ -35,7 +36,7 @@ class _TheBestTodayDescriptionState
         child: Column(
           children: [
             Text(
-              'What was the best today?',
+              FlutterI18n.translate(context, 'best_today'),
               style: textTheme.bodyMedium,
             ),
             CustomTextField(

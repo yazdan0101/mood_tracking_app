@@ -3,6 +3,8 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_i18n/loaders/decoders/json_decode_strategy.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_tracking_app/src/core/providers/current_app_locale_provider.dart';
+import 'package:mood_tracking_app/src/core/providers/supported_locale_provider.dart';
 import 'package:mood_tracking_app/src/router/router.dart';
 
 void main() {
@@ -15,6 +17,8 @@ class MoodTrackingApp extends ConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     final router = ref.watch(routerProvider);
+    final supportedLocaleList = ref.read(supportedLocalesProvider);
+    final currentLocale = ref.watch(currentAppLocaleProvider);
     return MaterialApp.router(
       localizationsDelegates: [
         FlutterI18nDelegate(
@@ -25,10 +29,8 @@ class MoodTrackingApp extends ConsumerWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('de'),
-      ],
+      supportedLocales: supportedLocaleList,
+      locale: currentLocale,
       builder: FlutterI18n.rootAppBuilder(),
       theme: ThemeData.from(colorScheme: lightColorScheme).copyWith(
         scaffoldBackgroundColor: AppColors.background,

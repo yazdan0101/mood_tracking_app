@@ -15,14 +15,16 @@ final postMoodEntryProvider =
   }
   final baseUrl = ref.read(baseBackendUrlProvider);
   final uri = Uri.parse('$baseUrl/api/mood-entries');
-  final response = await http.post(
-    uri,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token',
-    },
-    body: jsonEncode(entry.toJson()),
-  );
+  final response = await http
+      .post(
+        uri,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode(entry.toJson()),
+      )
+      .timeout(const Duration(seconds: 10));
 
   if (response.statusCode != 201) {
     final body = jsonDecode(response.body);

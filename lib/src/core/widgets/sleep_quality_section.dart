@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_tracking_app/src/core/providers/sleep_quality_list_provider.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_card.dart';
@@ -12,12 +13,14 @@ class SleepQualitySection extends ConsumerWidget {
     final allSleepQualities = ref.watch(sleepQualityListProvider);
     final allSleepQualityIcons = ref.watch(sleepQualityIconsProvider);
     return CustomCard(
-        title: 'How was your sleep?',
-        wrapChildren: List.generate(
-          allSleepQualities.length,
-          (final index) => SleepQualityChip(
-              sleepQuality: allSleepQualities[index],
-              iconData: allSleepQualityIcons[index],),
-        ),);
+      title: FlutterI18n.translate(context, 'sleep_how'),
+      wrapChildren: List.generate(
+        allSleepQualities.length,
+        (final index) => SleepQualityChip(
+          sleepQuality: allSleepQualities[index],
+          iconData: allSleepQualityIcons[index],
+        ),
+      ),
+    );
   }
 }

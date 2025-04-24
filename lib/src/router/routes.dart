@@ -33,7 +33,7 @@ class HomeRoute extends GoRouteData {
     final BuildContext context,
     final GoRouterState state,
   ) =>
-      const HomePage();
+      HomePage();
 }
 
 @TypedGoRoute<DetailsRoute>(

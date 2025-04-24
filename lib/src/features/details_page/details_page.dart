@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_tracking_app/src/core/widgets/activity_section.dart';
 import 'package:mood_tracking_app/src/core/widgets/back_next_section.dart';
@@ -17,9 +18,9 @@ class DetailsPage extends ConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
-    
+
     return CustomScaffold(
-      title: const Text('Mood'),
+      title: Text(FlutterI18n.translate(context, 'mood')),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -30,7 +31,7 @@ class DetailsPage extends ConsumerWidget {
             ),
             const VerticalGapWidget(),
             Text(
-              'Mood',
+              FlutterI18n.translate(context, 'mood'),
               style: textTheme.bodyLarge,
             ),
             const VerticalGapWidget(),
