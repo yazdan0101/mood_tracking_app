@@ -78,6 +78,39 @@ Use these credentials to log in and test functionality:
 
 - **Username:** `psuser`
 - **Password:** `pspass`
+---
+### Third‑Party Packages
 
+Besides go_router and flutter_riverpod, this Flutter client uses:
+
+cupertino_icons: Provides the default iOS style icons for a native look on Apple devices.
+
+riverpod_annotation: Enables code generation of Riverpod providers, reducing boilerplate and improving type safety.
+
+go_router_builder: Generates strongly‑typed route classes and helpers for go_router, avoiding string‑based navigation errors.
+
+flutter_svg: Renders SVG assets (the mood icons) sharply at any size without rasterization artifacts.
+
+http: A simple, composable HTTP client for making REST calls to the Symfony backend.
+
+freezed_annotation & freezed: Immutable data classes with copyWith, equals, and sealed unions to model API payloads safely.
+
+json_annotation & json_serializable: Auto‑generate toJson/fromJson serialization code for the Freezed entities.
+
+flutter_i18n: Manages translations and localization for German and English UI text.
+
+flutter_localizations: Enables Flutter’s built‑in internationalization support, required by flutter_i18n.
+
+Dev Dependencies
+
+flutter_lints: Provides a recommended set of lints to enforce consistent code style.
+
+build_runner: Drives code generation tasks (Freezed, Riverpod, JSON Serializable).
+
+riverpod_generator: Generates Riverpod provider boilerplate.
+
+json_serializable: Generates JSON serialization logic for annotated classes
+
+---
 Built with ❤️ using Flutter, Riverpod, and go_router.
 
