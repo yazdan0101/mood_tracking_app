@@ -9,7 +9,7 @@ part 'router.g.dart';
 @riverpod
 GoRouter router(final Ref ref) => GoRouter(
       debugLogDiagnostics: true,
-      initialLocation: '/successful',
+      initialLocation: '/login',
       routes: $appRoutes,
       errorPageBuilder: (final context, final state) => const MaterialPage(
         child: Scaffold(

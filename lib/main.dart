@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_i18n/loaders/decoders/json_decode_strategy.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_tracking_app/src/router/router.dart';
 
@@ -13,6 +16,20 @@ class MoodTrackingApp extends ConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final router = ref.watch(routerProvider);
     return MaterialApp.router(
+      localizationsDelegates: [
+        FlutterI18nDelegate(
+          translationLoader:
+              FileTranslationLoader(decodeStrategies: [JsonDecodeStrategy()]),
+        ),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('de'),
+      ],
+      builder: FlutterI18n.rootAppBuilder(),
       theme: ThemeData.from(colorScheme: lightColorScheme).copyWith(
         scaffoldBackgroundColor: AppColors.background,
         cardColor: AppColors.surface,

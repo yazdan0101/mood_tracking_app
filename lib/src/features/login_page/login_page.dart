@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mood_tracking_app/src/core/entities/user.dart';
@@ -46,7 +47,7 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'User Login',
+                  FlutterI18n.translate(context, 'user_login'),
                   style: textTheme.bodyLarge?.copyWith(fontSize: 32),
                 ),
                 const VerticalGapWidget(),
