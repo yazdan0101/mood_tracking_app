@@ -5,7 +5,7 @@ import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
 
 class SleepQualityChip extends ConsumerWidget {
   const SleepQualityChip(
-      {required this.iconData, required this.sleepQuality, super.key});
+      {required this.iconData, required this.sleepQuality, super.key,});
 
   final SleepQuality sleepQuality;
   final IconData iconData;
@@ -17,7 +17,7 @@ class SleepQualityChip extends ConsumerWidget {
     final textTheme = theme.textTheme;
     final selectedSleepQuality = ref.watch(moodEntryProvider.select(
       (final state) => state.sleepQuality,
-    ));
+    ),);
     final isSleepQualitySelected = selectedSleepQuality == sleepQuality.name;
     return InkWell(
       onTap: () {

@@ -8,7 +8,7 @@ const List<String> initialActivityList = [
   'Travel',
   'Hobby',
   'Relax',
-  'Home work'
+  'Home work',
 ];
 const List<IconData> activityListIcons = [
   Icons.groups,
@@ -30,7 +30,7 @@ class ActivityListNotifier extends StateNotifier<List<String>> {
 
 final activityListProvider =
     StateNotifierProvider<ActivityListNotifier, List<String>>(
-        (final ref) => ActivityListNotifier());
+        (final ref) => ActivityListNotifier(),);
 
 final activityIconListProvider =
     Provider<List<IconData>>((final ref) => activityListIcons);

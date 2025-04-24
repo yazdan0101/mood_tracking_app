@@ -4,8 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mood_tracking_app/src/core/providers/mood_colors_provider.dart';
 
 class MoodImage extends ConsumerWidget {
-  const MoodImage(
-      {required this.index, required this.moodImagePath, super.key});
+  const MoodImage({
+    required this.index,
+    required this.moodImagePath,
+    super.key,
+  });
 
   final String moodImagePath;
   final int index;
@@ -14,9 +17,9 @@ class MoodImage extends ConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     final moodColors = ref.read(moodColorsProvider);
     return Container(
-      width: 75,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      padding: const EdgeInsets.all(8),
+      width: 90,
+      height: 90,
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         color: moodColors[index],

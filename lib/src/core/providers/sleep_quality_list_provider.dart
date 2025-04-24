@@ -5,12 +5,12 @@ import 'package:mood_tracking_app/src/core/enums/sleep_quality.dart';
 const List<SleepQuality> initialSleepQuality = [
   SleepQuality.good,
   SleepQuality.okay,
-  SleepQuality.bad
+  SleepQuality.bad,
 ];
 const List<IconData> sleepQualityIcons = [
   Icons.sentiment_very_satisfied,
   Icons.sentiment_neutral,
-  Icons.sentiment_dissatisfied_outlined
+  Icons.sentiment_dissatisfied_outlined,
 ];
 
 class SleepQualityListListNotifier extends StateNotifier<List<SleepQuality>> {

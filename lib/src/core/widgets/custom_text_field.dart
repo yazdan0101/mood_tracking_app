@@ -5,7 +5,7 @@ class CustomTextField extends StatelessWidget {
       {required this.onChange,
       required this.controller,
       required this.maxLines,
-      super.key});
+      super.key,});
 
   final TextEditingController controller;
   final void Function(String value) onChange;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mood_tracking_app/src/core/widgets/custom_icon_container.dart';
 
 List<Widget> appBarActions() => [
       Container(
@@ -29,15 +30,19 @@ List<Widget> appBarActions() => [
       const SizedBox(
         width: 20,
       ),
-      const Icon(
-        Icons.message_outlined,
-        size: 40,
+      const CustomIconContainer(
+        child: Icon(
+          Icons.message_outlined,
+          size: 40,
+        ),
       ),
       const SizedBox(
         width: 20,
       ),
-      const Icon(
-        Icons.date_range,
-        size: 40,
+      const CustomIconContainer(
+        child: Icon(
+          Icons.date_range,
+          size: 40,
+        ),
       ),
     ];

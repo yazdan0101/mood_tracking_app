@@ -5,6 +5,7 @@ import 'package:mood_tracking_app/src/core/entities/user.dart';
 import 'package:mood_tracking_app/src/core/providers/auth_provider.dart';
 import 'package:mood_tracking_app/src/core/providers/base_backend_url_provider.dart';
 import 'package:mood_tracking_app/src/core/providers/user_provider.dart';
+import 'package:mood_tracking_app/src/core/widgets/vertical_gap_widget.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -31,9 +32,6 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
         context.go('/');
       }
     });
-    const gap20 = SizedBox(
-      height: 20,
-    );
     final textFieldTextStyle =
         textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.normal);
     return Scaffold(
@@ -47,9 +45,12 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('User Login'),
-                gap20,
-                gap20,
+                Text(
+                  'User Login',
+                  style: textTheme.bodyLarge?.copyWith(fontSize: 32),
+                ),
+                const VerticalGapWidget(),
+                const VerticalGapWidget(),
                 Container(
                   width: 400,
                   padding: const EdgeInsets.all(24),
@@ -73,7 +74,7 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                           validator: (final v) =>
                               v!.isEmpty ? 'username_required' : null,
                         ),
-                        gap20,
+                        const VerticalGapWidget(),
                         TextFormField(
                           keyboardType: TextInputType.visiblePassword,
                           textInputAction: TextInputAction.done,
@@ -87,8 +88,14 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                           validator: (final v) =>
                               v!.isEmpty ? 'password_required' : null,
                         ),
-                        gap20,
+                        const VerticalGapWidget(),
+                        const VerticalGapWidget(),
+                        const VerticalGapWidget(),
                         ElevatedButton.icon(
+                          style: theme.elevatedButtonTheme.style?.copyWith(
+                            minimumSize:
+                                const WidgetStatePropertyAll(Size(250, 60)),
+                          ),
                           icon: auth.status == AuthStatus.loading
                               ? SizedBox(
                                   height: 20,
@@ -101,19 +108,6 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                                   Icons.login,
                                   color: colorScheme.surface,
                                 ),
-                          style: ButtonStyle(
-                            padding: const WidgetStatePropertyAll<
-                                EdgeInsetsGeometry>(
-                              EdgeInsets.symmetric(
-                                  horizontal: 50, vertical: 16),
-                            ),
-                            backgroundColor: WidgetStatePropertyAll<Color>(
-                              colorScheme.primary,
-                            ),
-                            foregroundColor: WidgetStatePropertyAll<Color>(
-                              colorScheme.surface,
-                            ),
-                          ),
                           onPressed: auth.status != AuthStatus.loading
                               ? () async {
                                   if (_formKey.currentState!.validate()) {
@@ -137,7 +131,11 @@ class _LoginScreenState extends ConsumerState<LoginPage> {
                                   }
                                 }
                               : null,
-                          label: const Text('login'),
+                          label: Text(
+                            'login',
+                            style: textTheme.bodyMedium
+                                ?.copyWith(color: colorScheme.surface),
+                          ),
                         ),
                         if (auth.status == AuthStatus.error)
                           Padding(

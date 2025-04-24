@@ -42,7 +42,7 @@ class FeelingChip extends ConsumerWidget {
           style: textTheme.bodyMedium?.copyWith(
               color: isFellingSelected
                   ? colorScheme.surface
-                  : colorScheme.onSurface),
+                  : colorScheme.onSurface,),
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mood_tracking_app/src/core/providers/mood_enrty_provider.dart';
-import 'package:mood_tracking_app/src/core/providers/post_mood_entry.dart';
+import 'package:mood_tracking_app/src/core/providers/post_mood_entry_provider.dart';
 import 'package:mood_tracking_app/src/router/routes.dart';
 
 class BackNextSection extends ConsumerWidget {
@@ -34,7 +34,7 @@ class BackNextSection extends ConsumerWidget {
                 'Back',
                 style: textTheme.bodyLarge
                     ?.copyWith(color: colorScheme.onSecondary),
-              )
+              ),
             ],
           ),
           InkWell(
@@ -50,7 +50,8 @@ class BackNextSection extends ConsumerWidget {
               if (!isFormValid) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                      content: Text('You must answer every question')),
+                    content: Text('You must answer every question'),
+                  ),
                 );
                 return;
               }
@@ -61,7 +62,7 @@ class BackNextSection extends ConsumerWidget {
               showDialog(
                 context: context,
                 barrierDismissible: false,
-                builder: (_) =>
+                builder: (final _) =>
                     const Center(child: CircularProgressIndicator()),
               );
 
@@ -76,7 +77,6 @@ class BackNextSection extends ConsumerWidget {
                 if (context.mounted) {
                   context.pop();
                 }
-                print('error: $err');
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Failed to submit: $err')),

@@ -5,7 +5,7 @@ import 'package:mood_tracking_app/src/core/providers/selected_activity_list_prov
 
 class ActivityChip extends ConsumerWidget {
   const ActivityChip(
-      {required this.activity, required this.iconData, super.key});
+      {required this.activity, required this.iconData, super.key,});
 
   final String activity;
   final IconData iconData;

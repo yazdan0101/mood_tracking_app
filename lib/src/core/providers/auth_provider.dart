@@ -16,7 +16,7 @@ class AuthState {
   AuthState copyWith(
           {final AuthStatus? status,
           final String? token,
-          final String? error}) =>
+          final String? error,}) =>
       AuthState(
         status: status ?? this.status,
         token: token ?? this.token,

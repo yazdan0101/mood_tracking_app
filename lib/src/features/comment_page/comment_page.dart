@@ -5,6 +5,7 @@ import 'package:mood_tracking_app/src/core/widgets/back_next_section.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_scaffold.dart';
 import 'package:mood_tracking_app/src/core/widgets/custom_text_field.dart';
 import 'package:mood_tracking_app/src/core/widgets/step_indicator.dart';
+import 'package:mood_tracking_app/src/core/widgets/vertical_gap_widget.dart';
 
 class CommentPage extends ConsumerStatefulWidget {
   const CommentPage({super.key});
@@ -36,20 +37,14 @@ class _MoodCommentPageState extends ConsumerState<CommentPage> {
       title: const Text('Mood'),
       body: Column(
         children: [
-          const SizedBox(
-            height: 20,
-          ),
+          const VerticalGapWidget(),
           const StepIndicator(numSteps: 2, pageIndex: 1),
-          const SizedBox(
-            height: 20,
-          ),
+          const VerticalGapWidget(),
           Text(
             'Do you want to enter a comment?',
             style: textTheme.bodyLarge,
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const VerticalGapWidget(),
           Card(
             child: CustomTextField(
               maxLines: 8,
@@ -59,9 +54,7 @@ class _MoodCommentPageState extends ConsumerState<CommentPage> {
               controller: _controller,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const VerticalGapWidget(),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: const BoxDecoration(
@@ -98,7 +91,7 @@ class _MoodCommentPageState extends ConsumerState<CommentPage> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

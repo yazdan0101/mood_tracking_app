@@ -17,15 +17,36 @@ class MoodTrackingApp extends ConsumerWidget {
         scaffoldBackgroundColor: AppColors.background,
         cardColor: AppColors.surface,
         dividerColor: AppColors.border,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            iconSize: const WidgetStatePropertyAll(25),
+            backgroundColor: const WidgetStatePropertyAll(AppColors.primary),
+            foregroundColor: const WidgetStatePropertyAll(AppColors.surface),
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+            ),
+            textStyle: const WidgetStatePropertyAll(
+              TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
         textTheme: ThemeData.light().textTheme.copyWith(
               bodyLarge: const TextStyle(
-                  fontSize: 22,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 22,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
               bodyMedium: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 20,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
               bodySmall: const TextStyle(fontSize: 16, color: Colors.black),
               labelLarge: const TextStyle(fontSize: 24, color: Colors.black),
             ),

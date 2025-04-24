@@ -43,7 +43,7 @@ class _TheBestTodayDescriptionState
               onChange: (final value) =>
                   ref.read(moodEntryProvider.notifier).updateBestOfToday(value),
               controller: _controller,
-            )
+            ),
           ],
         ),
       ),

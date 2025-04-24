@@ -16,7 +16,7 @@ class ActivitySection extends ConsumerWidget {
       wrapChildren: List.generate(
         allActivities.length,
         (final index) => ActivityChip(
-            activity: allActivities[index], iconData: allIcons[index]),
+            activity: allActivities[index], iconData: allIcons[index],),
       ),
     );
   }

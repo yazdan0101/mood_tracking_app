@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StepIndicator extends ConsumerWidget {
   const StepIndicator(
-      {required this.numSteps, required this.pageIndex, super.key});
+      {required this.numSteps, required this.pageIndex, super.key,});
 
   final int numSteps;
   final int pageIndex;

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_tracking_app/src/core/widgets/vertical_gap_widget.dart';
 
 class CustomCard extends ConsumerWidget {
-  const CustomCard(
-      {required this.title, required this.wrapChildren, super.key});
+  const CustomCard({
+    required this.title,
+    required this.wrapChildren,
+    super.key,
+  });
 
   final List<Widget> wrapChildren;
   final String title;
@@ -23,9 +27,7 @@ class CustomCard extends ConsumerWidget {
                 title,
                 style: textTheme.bodyMedium,
               ),
-              const SizedBox(
-                height: 16,
-              ),
+              const VerticalGapWidget(),
               SizedBox(
                 width: screenWidth,
                 child: Wrap(
@@ -33,7 +35,7 @@ class CustomCard extends ConsumerWidget {
                   spacing: 8,
                   children: wrapChildren,
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -17,7 +17,7 @@ class SleepQualitySection extends ConsumerWidget {
           allSleepQualities.length,
           (final index) => SleepQualityChip(
               sleepQuality: allSleepQualities[index],
-              iconData: allSleepQualityIcons[index]),
-        ));
+              iconData: allSleepQualityIcons[index],),
+        ),);
   }
 }
